@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KWO - Privacy Policy</title>
+    <title>Privacy Policy - KWO Recovery</title>
+    <meta name="description" content="KWO Recovery Privacy Policy - Learn how we collect, use, and protect your data.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --forest-dark: #1a2f1a;
+            --forest-mid: #2d4a2d;
+            --sage: #7A8F62;
+            --sage-light: #9DB17C;
+            --leaf: #4a7c4a;
+            --cream: #FAF9F6;
+            --gold: #D4A853;
+            --earth: #5c4a3a;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,286 +28,431 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--forest-dark);
+            color: var(--cream);
+            line-height: 1.7;
         }
 
-        .container {
+        /* Nature Background */
+        .nature-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 10% 90%, rgba(74, 124, 74, 0.2) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 10%, rgba(107, 142, 107, 0.15) 0%, transparent 40%),
+                linear-gradient(180deg, #0d1f0d 0%, #1a2f1a 50%, #2d4a2d 100%);
+        }
+
+        header {
+            background: rgba(13, 31, 13, 0.95);
+            padding: 20px;
+            border-bottom: 1px solid rgba(122, 143, 98, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
             max-width: 900px;
             margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header {
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sage-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-link {
+            color: var(--sage-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--gold);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+            position: relative;
+        }
+
+        .page-header {
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 3px solid #7A8F62;
-            padding-bottom: 20px;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(122, 143, 98, 0.2);
         }
 
-        .header h1 {
-            color: #4A7A4A;
-            font-size: 2.5em;
+        .page-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--cream);
             margin-bottom: 10px;
-        }
-
-        .header p {
-            color: #666;
-            font-size: 1.1em;
         }
 
         .last-updated {
-            text-align: center;
-            color: #999;
-            font-size: 0.9em;
-            margin-bottom: 30px;
+            color: var(--sage-light);
+            font-size: 0.95rem;
+        }
+
+        .summary-box {
+            background: linear-gradient(145deg, rgba(45, 74, 45, 0.4), rgba(26, 47, 26, 0.6));
+            border-left: 4px solid var(--sage);
+            padding: 25px;
+            margin-bottom: 40px;
+            border-radius: 0 15px 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .summary-box h2 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            border: none;
+            padding: 0;
+        }
+
+        .summary-box ul {
+            margin-left: 20px;
+        }
+
+        .summary-box li {
+            margin-bottom: 10px;
+            color: rgba(250, 249, 246, 0.9);
         }
 
         h2 {
-            color: #4A7A4A;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.5em;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 50px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(122, 143, 98, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: "🌿";
+            font-size: 1.2rem;
         }
 
         h3 {
-            color: #7A8F62;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-size: 1.2em;
+            font-size: 1.2rem;
+            margin: 25px 0 15px;
+            color: var(--sage-light);
         }
 
         p {
             margin-bottom: 15px;
-            color: #555;
-            line-height: 1.8;
+            color: rgba(250, 249, 246, 0.85);
         }
 
-        ul, ol {
-            margin-left: 25px;
-            margin-bottom: 15px;
+        ul,
+        ol {
+            margin: 15px 0 15px 30px;
         }
 
         li {
             margin-bottom: 10px;
-            color: #555;
+            color: rgba(250, 249, 246, 0.85);
         }
 
-        .section {
-            margin-bottom: 30px;
-        }
-
-        .contact-section {
-            background-color: #f8f9fa;
+        .warning-box {
+            background: rgba(139, 69, 19, 0.3);
+            border: 1px solid rgba(212, 168, 83, 0.5);
             padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
+            border-radius: 12px;
+            margin: 25px 0;
         }
 
-        .contact-section h3 {
-            color: #4A7A4A;
+        .warning-box strong {
+            color: var(--gold);
+        }
+
+        .info-box {
+            background: rgba(74, 124, 74, 0.2);
+            border: 1px solid rgba(122, 143, 98, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(45, 74, 45, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(122, 143, 98, 0.2);
+        }
+
+        th {
+            background: rgba(74, 124, 74, 0.4);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(122, 143, 98, 0.1);
+        }
+
+        td {
+            color: rgba(250, 249, 246, 0.85);
+        }
+
+        .contact-box {
+            background: linear-gradient(145deg, rgba(45, 74, 45, 0.4), rgba(26, 47, 26, 0.6));
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid rgba(122, 143, 98, 0.3);
+        }
+
+        .contact-box h3 {
             margin-top: 0;
+            color: var(--gold);
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #7A8F62;
+        .contact-box a {
+            color: var(--sage-light);
+            font-weight: 600;
             text-decoration: none;
-            font-weight: 500;
+            transition: color 0.3s;
         }
 
-        .back-link:hover {
-            text-decoration: underline;
+        .contact-box a:hover {
+            color: var(--gold);
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
+        footer {
+            background: rgba(13, 31, 13, 0.95);
+            color: var(--cream);
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(122, 143, 98, 0.2);
+        }
 
-            .header h1 {
-                font-size: 1.8em;
-            }
+        footer a {
+            color: var(--sage-light);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+
+        footer p {
+            color: rgba(250, 249, 246, 0.5);
+            margin-bottom: 15px;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <a href="index.html" class="back-link">← Back to Home</a>
-        
-        <div class="header">
-            <h1>KWO Privacy Policy</h1>
-            <p>Your Privacy Matters to Us</p>
+    <div class="nature-bg"></div>
+
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">🌳 KWO Recovery</a>
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <span class="page-icon">🔒</span>
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last Updated: January 2026 | Effective: January 2026</p>
         </div>
 
-        <div class="last-updated">
-            Last Updated: January 2026
-        </div>
-
-        <div class="section">
-            <h2>Introduction</h2>
-            <p>KWO ("we," "us," "our," or the "App") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application.</p>
-            <p>Please read this Privacy Policy carefully. If you do not agree with our policies and practices, please do not use our App.</p>
-        </div>
-
-        <div class="section">
-            <h2>1. Information We Collect</h2>
-
-            <h3>1.1 Information You Provide</h3>
+        <div class="summary-box">
+            <h2>🌿 Privacy Summary</h2>
             <ul>
-                <li><strong>Account Information:</strong> Name, email address, phone number, password</li>
-                <li><strong>Profile Information:</strong> Profile photo, addiction types, recovery goals, faith preferences</li>
-                <li><strong>Health & Wellness Data:</strong> Check-in responses, mood tracking, sleep logs, fitness activities, nutrition information, mental health insights</li>
-                <li><strong>Communication Data:</strong> Messages with our AI companion, voice recordings, journal entries, time capsule letters</li>
-                <li><strong>Financial Data:</strong> Addiction cost estimates, savings calculations (no actual payment information—payments handled by Apple App Store)</li>
-                <li><strong>Media:</strong> Photos and videos you choose to share in the app</li>
-                <li><strong>Emergency Contacts:</strong> Phone numbers of trusted contacts for crisis support</li>
-            </ul>
-
-            <h3>1.2 Information Collected Automatically</h3>
-            <ul>
-                <li><strong>Device Information:</strong> Device model, OS version, app version, device identifier for push notifications</li>
-                <li><strong>Usage Data:</strong> App launch times, features used, check-in frequency, challenge completion rates</li>
-                <li><strong>Technical Data:</strong> IP address, timestamps, crash logs (if crash reporting enabled)</li>
-                <li><strong>Push Notification Tokens:</strong> For sending check-in reminders and support alerts</li>
-            </ul>
-
-            <h3>1.3 Third-Party Data</h3>
-            <ul>
-                <li><strong>Apple App Store:</strong> Subscription and purchase information</li>
-                <li><strong>OpenAI:</strong> Chat messages (for AI companion responses), voice recordings (for transcription)</li>
-                <li><strong>RevenueCat:</strong> Subscription status and entitlements</li>
-                <li><strong>Supabase:</strong> Push notification tokens and device information</li>
+                <li><strong>We DO:</strong> Encrypt your data, delete it when you ask, and limit third-party access</li>
+                <li><strong>We DON'T:</strong> Sell your data, train AI on your health information, or share with
+                    advertisers</li>
+                <li><strong>You control:</strong> Your data, your privacy settings, and your ability to delete
+                    everything</li>
             </ul>
         </div>
 
-        <div class="section">
-            <h2>2. How We Use Your Information</h2>
-            <ul>
-                <li><strong>Provide App Services:</strong> Account management, authentication, personalized recovery support</li>
-                <li><strong>AI Companion:</strong> Deliver personalized AI conversations, mood-adaptive responses, educational addiction content</li>
-                <li><strong>Personalization:</strong> Customize your experience based on your addictions, preferences, and progress</li>
-                <li><strong>Crisis Support:</strong> Enable emergency features, track patterns, provide proactive support during vulnerable times</li>
-                <li><strong>Analytics:</strong> Understand user behavior, improve features, identify technical issues</li>
-                <li><strong>Push Notifications:</strong> Send check-in reminders, support alerts, milestone celebrations</li>
-                <li><strong>Accountability Features:</strong> Enable partner notifications and support coordination</li>
-                <li><strong>Legal Compliance:</strong> Comply with applicable laws and protect user safety</li>
-            </ul>
+        <div class="warning-box">
+            <strong>⚠️ Important:</strong> KWO Recovery is NOT a medical provider and is NOT HIPAA-compliant.
+            We take privacy seriously, but we cannot guarantee the same protections as a doctor's office.
+            If you need medical help, please contact a licensed professional.
         </div>
 
-        <div class="section">
-            <h2>3. How We Share Your Information</h2>
-            <h3>We do NOT sell your personal information.</h3>
-            <p>We share information only in these limited circumstances:</p>
-            <ul>
-                <li><strong>Third-Party Service Providers:</strong>
-                    <ul>
-                        <li>OpenAI: For AI companion chat and voice transcription</li>
-                        <li>RevenueCat: For subscription management</li>
-                        <li>Supabase: For push notifications and database services</li>
-                        <li>Apple: For payment processing (via App Store)</li>
-                    </ul>
-                </li>
-                <li><strong>Accountability Partners:</strong> Only the information YOU choose to share with your selected partners</li>
-                <li><strong>Legal Obligations:</strong> When required by law, court order, or to prevent harm</li>
-            </ul>
-            <p><strong>No Advertising or Data Brokering:</strong> We do not use your data for targeted advertising, sell it to data brokers, or share it with ad networks.</p>
+        <h2>1. What Data We Collect</h2>
+
+        <h3>Health & Recovery Data</h3>
+        <ul>
+            <li>Daily check-in responses (mood ratings, emotions, activities)</li>
+            <li>Recovery streak information</li>
+            <li>Challenge completions and points</li>
+            <li>Crisis session access (timestamps only)</li>
+        </ul>
+
+        <h3>AI Chat Data</h3>
+        <ul>
+            <li>Your messages and AI responses</li>
+            <li>Messages are sent to OpenAI for processing</li>
+            <li>OpenAI retains data for 30 days (abuse monitoring)</li>
+            <li>OpenAI does NOT train models on API data</li>
+        </ul>
+
+        <h3>Account Information</h3>
+        <ul>
+            <li>Email address (for account recovery)</li>
+            <li>Password (hashed - we can't see it)</li>
+            <li>Subscription status via RevenueCat</li>
+        </ul>
+
+        <h3>What We DON'T Collect</h3>
+        <ul>
+            <li>❌ Location data</li>
+            <li>❌ Contacts or messages</li>
+            <li>❌ Photos or files</li>
+            <li>❌ Data if you disable analytics</li>
+        </ul>
+
+        <h2>2. How We Use Your Data</h2>
+        <ul>
+            <li>Calculate recovery streaks and progression</li>
+            <li>Generate personalized recommendations</li>
+            <li>Deliver crisis support resources</li>
+            <li>Improve app features (anonymized)</li>
+            <li>Send notifications you've opted into</li>
+        </ul>
+
+        <h2>3. Third-Party Services</h2>
+
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>What's Shared</th>
+                <th>Their Policy</th>
+            </tr>
+            <tr>
+                <td>OpenAI</td>
+                <td>Chat messages (processed, 30-day retention)</td>
+                <td>Does NOT train on API data</td>
+            </tr>
+            <tr>
+                <td>RevenueCat</td>
+                <td>Subscription status only</td>
+                <td>No health data access</td>
+            </tr>
+            <tr>
+                <td>ElevenLabs</td>
+                <td>Voice text for synthesis</td>
+                <td>Audio not stored</td>
+            </tr>
+        </table>
+
+        <h2>4. Data Retention & Deletion</h2>
+
+        <table>
+            <tr>
+                <th>Data Type</th>
+                <th>Retention</th>
+            </tr>
+            <tr>
+                <td>Chat messages</td>
+                <td>90 days (then auto-deleted)</td>
+            </tr>
+            <tr>
+                <td>Check-in data</td>
+                <td>Duration of account</td>
+            </tr>
+            <tr>
+                <td>Analytics logs</td>
+                <td>30 days</td>
+            </tr>
+        </table>
+
+        <h3>Delete Your Data</h3>
+        <ol>
+            <li>Go to Settings → Account → Delete Account</li>
+            <li>Or email <strong>kwofitnesltd@outlook.com</strong></li>
+            <li>We'll delete everything within 30 days</li>
+        </ol>
+
+        <h2>5. Security Measures</h2>
+        <ul>
+            <li>✅ TLS 1.3 encryption in transit</li>
+            <li>✅ AES-256 encryption at rest</li>
+            <li>✅ Rate limiting on all endpoints</li>
+            <li>✅ API keys stored on backend only</li>
+            <li>✅ Continuous security monitoring</li>
+        </ul>
+
+        <h2>6. Your Rights (GDPR, CCPA)</h2>
+        <ul>
+            <li><strong>Access:</strong> Request a copy of your data</li>
+            <li><strong>Correction:</strong> Fix inaccurate data</li>
+            <li><strong>Deletion:</strong> Delete all your data</li>
+            <li><strong>Portability:</strong> Download your data (JSON)</li>
+            <li><strong>Opt-out:</strong> Disable analytics anytime</li>
+        </ul>
+
+        <h2>7. Children's Privacy</h2>
+        <div class="warning-box">
+            <strong>KWO Recovery is for users 18+ only.</strong><br>
+            We do not knowingly collect data from minors. If you're under 18 and struggling, please contact SAMHSA at
+            1-800-662-4357.
         </div>
 
-        <div class="section">
-            <h2>4. Data Security</h2>
-            <ul>
-                <li><strong>Encryption:</strong> AES-256-GCM encryption for backup data and sensitive information</li>
-                <li><strong>Transit Security:</strong> TLS 1.2+ for all data in transit</li>
-                <li><strong>Local Storage:</strong> Encrypted AsyncStorage on your device</li>
-                <li><strong>Authentication:</strong> JWT tokens with secure refresh flow</li>
-                <li><strong>Access Control:</strong> Role-based access control, ownership verification on all endpoints</li>
-                <li><strong>Audit Logging:</strong> All sensitive actions logged for security monitoring</li>
-            </ul>
-            <p><strong>Important:</strong> While we implement robust security measures, no system is 100% secure. We cannot guarantee absolute security of your data.</p>
-        </div>
+        <h2>8. Policy Updates</h2>
+        <p>We'll notify you via email and in-app notification 30 days before material changes. Continued use after
+            changes means acceptance.</p>
 
-        <div class="section">
-            <h2>5. Your Privacy Rights</h2>
-            <ul>
-                <li><strong>Access:</strong> Request a copy of your personal data</li>
-                <li><strong>Correction:</strong> Correct inaccurate information</li>
-                <li><strong>Deletion:</strong> Request deletion of your data (right to be forgotten)</li>
-                <li><strong>Portability:</strong> Export your data in standard formats (JSON, CSV, HTML)</li>
-                <li><strong>Opt-Out:</strong> Disable certain data collection (notifications, analytics)</li>
-            </ul>
-            <p>To exercise these rights, use the Data Management features in Settings or contact us at the address below.</p>
-        </div>
-
-        <div class="section">
-            <h2>6. Data Retention</h2>
-            <p><strong>Active Account:</strong> Your data is stored as long as your account is active.</p>
-            <p><strong>Account Deletion:</strong> When you request account deletion:</p>
-            <ul>
-                <li>You have a 30-day grace period to cancel the request</li>
-                <li>After 30 days, all personal data is permanently deleted</li>
-                <li>Backup copies are securely destroyed</li>
-                <li>Some data may be retained for legal compliance</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>7. Children's Privacy</h2>
-            <p>KWO is intended for users 18 years and older. We do not knowingly collect personal information from children under 18. If we become aware that a child under 18 has provided us with personal information, we will delete such information and terminate their account.</p>
-        </div>
-
-        <div class="section">
-            <h2>8. Third-Party Links</h2>
-            <p>The App may contain links to third-party websites and services. This Privacy Policy does not apply to third-party services, and we are not responsible for their privacy practices.</p>
-        </div>
-
-        <div class="section">
-            <h2>9. International Data Transfers</h2>
-            <p>Your information may be transferred to, stored in, and processed in countries other than your country of residence. By using KWO, you consent to the transfer of your information to countries outside your country of residence.</p>
-        </div>
-
-        <div class="section">
-            <h2>10. Changes to This Privacy Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by updating the "Last Updated" date. Your continued use of the App constitutes your acceptance of the updated Privacy Policy.</p>
-        </div>
-
-        <div class="section">
-            <h2>11. California Privacy Rights (CCPA)</h2>
-            <ul>
-                <li>Right to know what personal information is collected, used, shared, or sold</li>
-                <li>Right to delete personal information collected</li>
-                <li>Right to opt-out of the "sale" of personal information (we don't sell data)</li>
-                <li>Right to non-discrimination for exercising your CCPA rights</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>12. GDPR Compliance (EU Users)</h2>
-            <ul>
-                <li>Right to access, rectify, and erase your data</li>
-                <li>Right to data portability</li>
-                <li>Right to withdraw consent</li>
-                <li>Right to lodge a complaint with your local data protection authority</li>
-            </ul>
-        </div>
-
-        <div class="contact-section">
-            <h3>Contact Us</h3>
-            <p>If you have questions about this Privacy Policy or our privacy practices, please contact us:</p>
-            <p>
-                <strong>Email:</strong> kwofitnesltd@outlook.com<br>
-                <strong>App:</strong> KWO (Know Why Overcome)<br>
-                <strong>Last Updated:</strong> January 2026
+        <div class="contact-box">
+            <h3>🌿 Contact Us</h3>
+            <p><strong>All Inquiries:</strong> <a href="mailto:kwofitnesltd@outlook.com">kwofitnesltd@outlook.com</a>
             </p>
+            <p>Response time: Within 7 business days</p>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 KWO Recovery 🌱</p>
+        <a href="index.html">Home</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+    </footer>
 </body>
+
 </html>
