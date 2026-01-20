@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KWO Health - Recovery Companion App</title>
+    <title>KWO Recovery - Know Why. Overcome.</title>
+    <meta name="description"
+        content="KWO Recovery is a grace-based, AI-powered companion app for addiction recovery and mental health support. Available 24/7.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --forest-dark: #1a2f1a;
+            --forest-mid: #2d4a2d;
+            --sage: #7A8F62;
+            --sage-light: #9DB17C;
+            --leaf: #4a7c4a;
+            --cream: #FAF9F6;
+            --gold: #D4A853;
+            --gold-light: #f0d89a;
+            --earth: #5c4a3a;
+            --moss: #6b8e6b;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,156 +31,685 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--forest-dark);
+            color: var(--cream);
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Nature Background */
+        .nature-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(74, 124, 74, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(107, 142, 107, 0.2) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(45, 74, 45, 0.4) 0%, transparent 60%),
+                linear-gradient(180deg, #0d1f0d 0%, #1a2f1a 30%, #2d4a2d 70%, #1a2f1a 100%);
+        }
+
+        /* Floating Leaves Animation */
+        .leaves {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            opacity: 0.15;
+            animation: fall linear infinite;
+        }
+
+        .leaf::before {
+            content: "🍃";
+            font-size: 24px;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.15;
+            }
+
+            90% {
+                opacity: 0.15;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .leaf:nth-child(1) {
+            left: 10%;
+            animation-duration: 15s;
+            animation-delay: 0s;
+        }
+
+        .leaf:nth-child(2) {
+            left: 20%;
+            animation-duration: 18s;
+            animation-delay: 2s;
+        }
+
+        .leaf:nth-child(3) {
+            left: 35%;
+            animation-duration: 20s;
+            animation-delay: 4s;
+        }
+
+        .leaf:nth-child(4) {
+            left: 50%;
+            animation-duration: 16s;
+            animation-delay: 1s;
+        }
+
+        .leaf:nth-child(5) {
+            left: 65%;
+            animation-duration: 19s;
+            animation-delay: 3s;
+        }
+
+        .leaf:nth-child(6) {
+            left: 80%;
+            animation-duration: 17s;
+            animation-delay: 5s;
+        }
+
+        .leaf:nth-child(7) {
+            left: 90%;
+            animation-duration: 21s;
+            animation-delay: 2.5s;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            background: rgba(13, 31, 13, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(122, 143, 98, 0.3);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
+            padding: 0 20px;
         }
 
-        .header {
-            margin-bottom: 50px;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--sage-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        h1 {
-            color: #4A7A4A;
-            font-size: 3em;
-            margin-bottom: 20px;
+        .logo-icon {
+            font-size: 1.5rem;
         }
 
-        .subtitle {
-            color: #666;
-            font-size: 1.3em;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .logo span {
+            color: var(--gold);
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        .nav-links {
+            display: flex;
             gap: 30px;
-            margin: 60px 0;
+            list-style: none;
         }
 
-        .feature {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature h3 {
-            color: #4A7A4A;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .feature p {
-            color: #666;
-            font-size: 0.95em;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #7A8F62;
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
+        .nav-links a {
             text-decoration: none;
-            font-weight: 600;
-            margin: 20px 10px;
-            transition: background 0.3s;
-        }
-
-        .cta-button:hover {
-            background: #4A7A4A;
-        }
-
-        .footer {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid #ddd;
-            color: #666;
-        }
-
-        .footer-links {
-            margin: 20px 0;
-        }
-
-        .footer-links a {
-            color: #7A8F62;
-            text-decoration: none;
-            margin: 0 20px;
+            color: var(--cream);
             font-weight: 500;
+            transition: color 0.3s;
+            opacity: 0.9;
         }
 
-        .footer-links a:hover {
-            text-decoration: underline;
+        .nav-links a:hover {
+            color: var(--gold);
+            opacity: 1;
         }
 
-        .footer-text {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #999;
+        /* Hero */
+        .hero {
+            padding: 180px 0 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, rgba(26, 47, 26, 0.8), transparent);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--cream);
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--sage-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--sage-light);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: rgba(250, 249, 246, 0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .tree-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--sage), var(--leaf));
+            color: white;
+            box-shadow: 0 4px 20px rgba(74, 124, 74, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(74, 124, 74, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(250, 249, 246, 0.1);
+            color: var(--cream);
+            border: 2px solid var(--sage);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(122, 143, 98, 0.2);
+            border-color: var(--sage-light);
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(180deg, rgba(26, 47, 26, 0.9), rgba(13, 31, 13, 0.95));
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--cream);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--sage-light);
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 35px 30px;
+            background: linear-gradient(145deg, rgba(45, 74, 45, 0.4), rgba(26, 47, 26, 0.6));
+            border-radius: 20px;
+            border: 1px solid rgba(122, 143, 98, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--sage);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+
+        .feature-card p {
+            color: rgba(250, 249, 246, 0.8);
+            font-size: 1rem;
+        }
+
+        /* Growth Stages */
+        .growth-section {
+            padding: 80px 0;
+            background: rgba(13, 31, 13, 0.8);
+        }
+
+        .growth-stages {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .stage {
+            text-align: center;
+            padding: 30px;
+            background: rgba(45, 74, 45, 0.3);
+            border-radius: 20px;
+            min-width: 150px;
+            border: 1px solid rgba(122, 143, 98, 0.2);
+        }
+
+        .stage-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .stage h4 {
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .stage p {
+            color: rgba(250, 249, 246, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Crisis Banner */
+        .crisis-banner {
+            background: linear-gradient(135deg, #8B2942 0%, #6B1F32 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crisis-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .crisis-banner h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .crisis-banner p {
+            margin-bottom: 20px;
+            position: relative;
+            opacity: 0.95;
+        }
+
+        .crisis-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .crisis-banner a {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .crisis-banner a:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: rgba(45, 74, 45, 0.3);
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(122, 143, 98, 0.3);
+        }
+
+        .disclaimer p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(250, 249, 246, 0.7);
+            font-size: 0.95rem;
+        }
+
+        .disclaimer strong {
+            color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(13, 31, 13, 0.95);
+            color: var(--cream);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(122, 143, 98, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a {
+            color: rgba(250, 249, 246, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--sage-light);
+        }
+
+        .footer-section p {
+            color: rgba(250, 249, 246, 0.6);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(122, 143, 98, 0.2);
+            color: rgba(250, 249, 246, 0.5);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .growth-stages {
+                gap: 20px;
+            }
+
+            .stage {
+                min-width: 120px;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">🌿</div>
-            <h1>KWO Health</h1>
-            <p class="subtitle">Your AI-powered recovery companion. Supporting your journey to freedom, one day at a time.</p>
-        </div>
-
-        <div class="features">
-            <div class="feature">
-                <h3>💬 AI Companion</h3>
-                <p>Talk to your 24/7 AI companion trained for addiction recovery support without judgment.</p>
-            </div>
-            <div class="feature">
-                <h3>📊 Track Progress</h3>
-                <p>Monitor your sobriety journey, mood, cravings, and celebrate wins along the way.</p>
-            </div>
-            <div class="feature">
-                <h3>🤝 Community</h3>
-                <p>Connect with others in recovery, share experiences, and find peer support.</p>
-            </div>
-            <div class="feature">
-                <h3>🎯 Tools & Resources</h3>
-                <p>Access breathing exercises, coping strategies, and crisis resources anytime, anywhere.</p>
-            </div>
-        </div>
-
-        <div>
-            <h2 style="color: #4A7A4A; margin-bottom: 20px;">Download KWO Today</h2>
-            <p style="margin-bottom: 20px;">Available on iOS. Join thousands on their path to recovery.</p>
-            <a href="https://apps.apple.com/app/kwo-health/id6736891234" class="cta-button">Download on App Store</a>
-        </div>
-
-        <div class="footer">
-            <p>KWO Health - Supporting Recovery, Promoting Freedom</p>
-            <div class="footer-links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="mailto:kwofitnesltd@outlook.com">Contact Us</a>
-            </div>
-            <p class="footer-text">&copy; 2026 KWO Health. All rights reserved.</p>
-        </div>
+    <div class="nature-bg"></div>
+    <div class="leaves">
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
     </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">
+                    <span class="logo-icon">🌳</span>
+                    KWO<span>.</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="tree-icon">🌱</span>
+                <h1>Know Why. <span class="highlight">Overcome.</span></h1>
+                <p class="tagline">Your 24/7 AI-Powered Recovery Companion</p>
+                <p class="subtitle">
+                    A grace-based app for addiction recovery and mental health support.
+                    Grow from seed to fruit. No judgment. No shame. Just growth.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://vibecodeapp.com" class="btn btn-primary">🌿 Start Growing Free</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="growth-section">
+            <div class="container">
+                <h2 class="section-title">Your Growth Journey</h2>
+                <p class="section-subtitle">Progress through 4 stages as you heal and grow</p>
+                <div class="growth-stages">
+                    <div class="stage">
+                        <span class="stage-icon">🌱</span>
+                        <h4>Seed</h4>
+                        <p>New beginnings</p>
+                    </div>
+                    <div class="stage">
+                        <span class="stage-icon">🌿</span>
+                        <h4>Root</h4>
+                        <p>Building foundation</p>
+                    </div>
+                    <div class="stage">
+                        <span class="stage-icon">🌳</span>
+                        <h4>Tree</h4>
+                        <p>Growing strong</p>
+                    </div>
+                    <div class="stage">
+                        <span class="stage-icon">🍎</span>
+                        <h4>Fruit</h4>
+                        <p>Full freedom</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title">Features Built for Your Recovery</h2>
+                <p class="section-subtitle">Everything you need to grow, heal, and thrive</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">💬</span>
+                        <h3>24/7 AI Companion</h3>
+                        <p>Talk to a supportive AI companion anytime, day or night. Text or voice - whatever feels
+                            right.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3>Daily Challenges</h3>
+                        <p>Personalized challenges that help you build new habits and replace old patterns.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🌳</span>
+                        <h3>Growth Tracking</h3>
+                        <p>Watch your progress through 4 stages: Seed, Root, Tree, and Fruit. Celebrate every milestone.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🆘</span>
+                        <h3>Crisis Support</h3>
+                        <p>Immediate access to crisis resources, breathing exercises, and emergency contacts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">👥</span>
+                        <h3>Accountability Partners</h3>
+                        <p>Connect with trusted people who can support your journey without seeing private details.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">💰</span>
+                        <h3>Financial Tracker</h3>
+                        <p>See how much money you're saving by breaking free from costly habits.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="crisis-banner">
+            <div class="container">
+                <h3>🆘 In Crisis Right Now?</h3>
+                <p>You don't have to face this alone. Help is available 24/7.</p>
+                <div class="crisis-links">
+                    <a href="tel:988">📞 Call 988</a>
+                    <a href="sms:741741?body=HELLO">💬 Text 741741</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="disclaimer">
+            <div class="container">
+                <p>
+                    <strong>Important:</strong> KWO Recovery is a support tool, not a replacement for professional
+                    mental health treatment.
+                    We are NOT a medical provider and do NOT offer HIPAA-protected services.
+                    If you're experiencing a mental health emergency, please call 988, 911, or go to your nearest
+                    emergency room.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="support">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🌳 KWO Recovery</h4>
+                    <p>Grace-based recovery support for the modern journey. Grow from seed to fruit.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="mailto:kwofitnesltd@outlook.com">kwofitnesltd@outlook.com</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Crisis Resources</h4>
+                    <a href="tel:988">988 - Suicide & Crisis Lifeline</a>
+                    <a href="tel:18006624357">SAMHSA: 1-800-662-4357</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 KWO Recovery. All rights reserved. 🌱</p>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
