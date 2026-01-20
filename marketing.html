@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KWO Recovery | Your Grace-Based Companion for Freedom</title>
+    <meta name="description" content="Stop fighting alone. KWO Recovery is the AI-powered, grace-based companion that helps you break free from addiction and find your 'Why'.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --forest-deep: #0f1f0f;
+            --forest-mid: #1a2f1a;
+            --sage: #7A8F62;
+            --sage-glow: #9DB17C;
+            --cream: #FAF9F6;
+            --gold: #D4A853;
+            --gold-glow: #F0D89A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--forest-deep);
+            color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- IMMERSIVE BACKGROUND --- */
+        .immersive-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(122, 143, 98, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(212, 168, 83, 0.1) 0%, transparent 40%),
+                url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            filter: contrast(1.1) saturate(0.8);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                rgba(15, 31, 15, 0.9) 0%, 
+                rgba(15, 31, 15, 0.7) 40%, 
+                rgba(15, 31, 15, 0.95) 100%);
+            z-index: -1;
+        }
+
+        /* --- PARTICLES (FIREFLIES) --- */
+        .firefly {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: 4px;
+            height: 4px;
+            margin: -2px 0 0 -2px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .firefly::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-glow);
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: flicker 4s infinite alternate;
+        }
+        @keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        /* --- NAVIGATION --- */
+        nav {
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sage-glow);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .download-btn-sm {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+        .download-btn-sm:hover {
+            background: var(--sage);
+            border-color: var(--sage);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 30%, var(--sage-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .app-store-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .store-btn {
+            background: white;
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 1.1rem;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.2);
+        }
+
+        /* --- PHONE MOCKUP --- */
+        .mockup-container {
+            perspective: 1000px;
+            margin-top: -40px;
+        }
+        
+        .mockup {
+            width: 300px;
+            height: 600px;
+            background: #000;
+            border-radius: 40px;
+            margin: 0 auto;
+            border: 8px solid #2a2a2a;
+            box-shadow: 
+                0 0 0 2px #444,
+                0 30px 60px rgba(0,0,0,0.7),
+                0 0 100px rgba(122, 143, 98, 0.2);
+            position: relative;
+            overflow: hidden;
+            transform: rotateX(5deg);
+        }
+
+        .mockup-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #1a2f1a 0%, #0f1f0f 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* --- FEATURES GRID --- */
+        .features {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--sage-glow);
+            margin-bottom: 16px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 24px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-5px);
+            border-color: var(--sage);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(122, 143, 98, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+            color: var(--sage-glow);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .card p {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.1rem;
+        }
+
+        /* --- EMOTIONAL SECTION --- */
+        .emotional-section {
+            padding: 120px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 100%);
+        }
+
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: white;
+            font-style: italic;
+        }
+
+        .quote-author {
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 80px 20px 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .hero { padding-top: 100px; }
+            .mockup { width: 260px; height: 520px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="immersive-bg"></div>
+    <div class="overlay"></div>
+
+    <!-- Animated Particles -->
+    <div class="firefly" style="top: 20%; left: 30%; animation-delay: 0s;"></div>
+    <div class="firefly" style="top: 50%; left: 80%; animation-delay: 1s;"></div>
+    <div class="firefly" style="top: 80%; left: 10%; animation-delay: 2s;"></div>
+
+    <nav>
+        <div class="logo">
+            <i data-lucide="sprout"></i>
+            KWO Recovery
+        </div>
+        <a href="#download" class="download-btn-sm">Get the App</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>You weren't meant to<br>fight this alone.</h1>
+            <p class="subtitle">
+                The first AI companion that understands the <i>root</i> of your struggle. 
+                No shame. No judgment. Just grace-based growth.
+            </p>
+            
+            <div class="app-store-btns" id="download">
+                <a href="#" class="store-btn">
+                    <i data-lucide="apple"></i>
+                    App Store
+                </a>
+            </div>
+
+            <div class="mockup-container">
+                <div class="mockup">
+                    <div class="mockup-screen">
+                        <i data-lucide="activity" size="48" color="#7A8F62" style="margin-bottom: 20px"></i>
+                        <h3 style="margin-bottom: 10px">Hi, David</h3>
+                        <p style="opacity: 0.7; margin-bottom: 30px">You've been sober for 12 days. The tree is growing strong.</p>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; width: 100%">
+                            "I'm feeling anxious..."
+                        </div>
+                        <div style="background: #7A8F62; padding: 15px; border-radius: 12px; width: 100%; margin-top: 10px; color: black; font-weight: 500">
+                             That's okay. Breathe. What's the root of that anxiety right now?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="section-header">
+            <h2>Why KWO is Different</h2>
+            <p style="font-size: 1.2rem; opacity: 0.7">Most apps track your days. We transform your life.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon"><i data-lucide="message-circle-heart"></i></div>
+                <h3>24/7 AI Companion</h3>
+                <p>An empathetic intelligence that's always awake. It learns your triggers, remembers your story, and guides you back to peace.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i data-lucide="shield"></i></div>
+                <h3>Judgment-Free Zone</h3>
+                <p>Complete privacy. No one sees your data but you. A safe space to be radically honest about your struggle.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i data-lucide="users"></i></div>
+                <h3>Safe Accountability</h3>
+                <p>Connect with partners without exposing your secrets. They see your growth, not your private journal.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i data-lucide="trees"></i></div>
+                <h3>Visual Growth</h3>
+                <p>Watch your recovery journey evolve from a fragile seed into a mighty, fruit-bearing tree.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="emotional-section">
+        <p class="quote">"Recovery isn't just about stopping. It's about building a life you don't need to escape from."</p>
+        <p class="quote-author">KWO Philosophy</p>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="mailto:support@kwo-recovery.com">Support</a>
+        </div>
+        <p>&copy; 2026 KWO Recovery. Made with inner peace.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
